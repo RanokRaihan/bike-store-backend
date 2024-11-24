@@ -63,5 +63,19 @@ productSchema.pre("save", function (next) {
     this.inStock = this.quantity > 0;
     next();
 });
+//update inStock status before updating the document
+productSchema.pre("findOneAndUpdate", function (next) {
+    const update = this.getUpdate();
+    if (update.quantity !== undefined) {
+        if (update.quantity > 0) {
+            update.inStock = true;
+        }
+        else {
+            update.inStock = false;
+        }
+        this.setUpdate(update);
+    }
+    next();
+});
 const Product = model("Product", productSchema);
 exports.default = Product;
