@@ -2,6 +2,10 @@
 
 This project is a backend service for a bike store application. It provides APIs to manage bikes, and orders.
 
+## Live Link
+
+You can access the live application [here](https://bike-store-backend.vercel.app/).
+
 ## Features
 
 - Manage bikes inventory

@@ -1,7 +1,7 @@
 {
   "name": "bike-store-backend",
   "version": "1.0.0",
-  "description": "Backend api server for a bike store created with express and mongoose",
+  "description": "Backend api server for a bike store created with express ,typescript and mongoose",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",

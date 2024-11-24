@@ -7,6 +7,7 @@ const port = PORT || 3000;
 // Connect to MongoDB
 connectDB()
   .then(() => {
+    // Start the server
     app.listen(port, () => {
       console.log(`server is running on port ${port}`);
     });

@@ -24,8 +24,8 @@ const orderSchema = new Schema<IOrder>(
       required: [true, "Quantity is required"],
       min: [1, "Quantity must be at least 1"],
       validate: {
-        validator: Number.isInteger,
-        message: "Quantity must be an integer",
+        validator: (value: number) => Number.isInteger(value),
+        message: "Quantity must be an integer!",
       },
     },
     totalPrice: {

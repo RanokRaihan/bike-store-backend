@@ -3,7 +3,12 @@ import { Order } from "./order.model";
 
 export const getOrdersFromDb = async (): Promise<IOrder[]> => {
   try {
-    return Order.find().populate("product").exec();
+    return Order.find()
+      .populate({
+        path: "product",
+        select: "-createdAt -updatedAt -__v",
+      })
+      .exec();
   } catch (error) {
     throw error;
   }
