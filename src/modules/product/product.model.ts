@@ -61,7 +61,7 @@ const productSchema = new Schema<IProduct>(
   }
 );
 
-productSchema.pre("save", function (next) {
+productSchema.pre<IProduct>("save", function (next) {
   this.inStock = this.quantity > 0;
   next();
 });

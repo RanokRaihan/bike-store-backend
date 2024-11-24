@@ -13,7 +13,12 @@ exports.calculateTotalRevenue = exports.createOrderToDb = exports.getOrdersFromD
 const order_model_1 = require("./order.model");
 const getOrdersFromDb = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return order_model_1.Order.find().populate("product").exec();
+        return order_model_1.Order.find()
+            .populate({
+            path: "product",
+            select: "-createdAt -updatedAt -__v",
+        })
+            .exec();
     }
     catch (error) {
         throw error;
