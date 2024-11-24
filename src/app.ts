@@ -1,5 +1,6 @@
 import cors from "cors";
 import express, { Application, NextFunction, Request, Response } from "express";
+import ordersRouter from "./modules/order/order.routes";
 import productsRouter from "./modules/product/product.routes";
 // Create Express app
 const app: Application = express();
@@ -11,6 +12,7 @@ app.use(cors());
 
 // define routes
 app.use("/api/products", productsRouter);
+app.use("/api/orders", ordersRouter);
 
 //global error handler
 app.use((error: any, req: Request, res: Response, next: NextFunction) => {

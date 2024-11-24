@@ -60,3 +60,13 @@ export const deleteSingleBikeFromDb = async (id: string) => {
     throw error;
   }
 };
+
+//extra: insert many bikes
+export const insertManyBikesToDb = async (bikes: IProduct[]) => {
+  try {
+    const insertedBikes = await Product.insertMany(bikes);
+    return insertedBikes;
+  } catch (error) {
+    throw error;
+  }
+};

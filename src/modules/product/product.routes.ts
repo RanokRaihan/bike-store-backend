@@ -4,6 +4,7 @@ import {
   deleteSingleBike,
   getAllBikes,
   getSingleBike,
+  insertManyBikes,
   updateBike,
 } from "./product.controller";
 
@@ -25,5 +26,8 @@ router.put("/:productId", updateBike);
 router.delete("/:productId", deleteSingleBike);
 //
 
+//TEMP: Add this line to the end of the file
+// insert many bikes
+router.post("/insertMany", insertManyBikes);
 //
 export default router;

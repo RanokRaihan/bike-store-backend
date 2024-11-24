@@ -5,6 +5,7 @@ import {
   deleteSingleBikeFromDb,
   getAllProductsFromDb,
   getSingleBikeFromDb,
+  insertManyBikesToDb,
   updateBikeToDb,
 } from "./product.service";
 
@@ -160,6 +161,30 @@ export const deleteSingleBike = async (
       message: "Bike deleted successfully",
       success: true,
       data: null,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// insert many bikes
+export const insertManyBikes = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    //get the bikes
+    const bikes: IProduct[] = req.body;
+
+    //call the service function
+    const insertedBikes = await insertManyBikesToDb(bikes);
+
+    //send the response
+    res.status(201).json({
+      message: "Bikes inserted successfully",
+      success: true,
+      data: insertedBikes,
     });
   } catch (error) {
     next(error);
