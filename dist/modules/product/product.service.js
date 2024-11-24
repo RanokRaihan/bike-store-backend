@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteSingleBikeFromDb = exports.updateBikeToDb = exports.getSingleBikeFromDb = exports.getAllProductsFromDb = exports.createProductToDb = void 0;
+exports.insertManyBikesToDb = exports.deleteSingleBikeFromDb = exports.updateBikeToDb = exports.getSingleBikeFromDb = exports.getAllProductsFromDb = exports.createProductToDb = void 0;
 const product_model_1 = __importDefault(require("./product.model"));
 //create a bike in the database
 const createProductToDb = (product) => __awaiter(void 0, void 0, void 0, function* () {
@@ -74,3 +74,14 @@ const deleteSingleBikeFromDb = (id) => __awaiter(void 0, void 0, void 0, functio
     }
 });
 exports.deleteSingleBikeFromDb = deleteSingleBikeFromDb;
+//extra: insert many bikes
+const insertManyBikesToDb = (bikes) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const insertedBikes = yield product_model_1.default.insertMany(bikes);
+        return insertedBikes;
+    }
+    catch (error) {
+        throw error;
+    }
+});
+exports.insertManyBikesToDb = insertManyBikesToDb;

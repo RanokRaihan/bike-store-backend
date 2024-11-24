@@ -14,5 +14,8 @@ router.put("/:productId", product_controller_1.updateBike);
 //delete a bike data
 router.delete("/:productId", product_controller_1.deleteSingleBike);
 //
+//TEMP: Add this line to the end of the file
+// insert many bikes
+router.post("/insertMany", product_controller_1.insertManyBikes);
 //
 exports.default = router;

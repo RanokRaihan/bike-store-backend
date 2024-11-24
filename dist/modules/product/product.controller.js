@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteSingleBike = exports.updateBike = exports.getSingleBike = exports.getAllBikes = exports.createProduct = void 0;
+exports.insertManyBikes = exports.deleteSingleBike = exports.updateBike = exports.getSingleBike = exports.getAllBikes = exports.createProduct = void 0;
 const product_service_1 = require("./product.service");
 const createProduct = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -138,3 +138,22 @@ const deleteSingleBike = (req, res, next) => __awaiter(void 0, void 0, void 0, f
     }
 });
 exports.deleteSingleBike = deleteSingleBike;
+// insert many bikes
+const insertManyBikes = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        //get the bikes
+        const bikes = req.body;
+        //call the service function
+        const insertedBikes = yield (0, product_service_1.insertManyBikesToDb)(bikes);
+        //send the response
+        res.status(201).json({
+            message: "Bikes inserted successfully",
+            success: true,
+            data: insertedBikes,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
+exports.insertManyBikes = insertManyBikes;
