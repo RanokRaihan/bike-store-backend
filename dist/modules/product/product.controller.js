@@ -51,7 +51,11 @@ const getSingleBike = (req, res, next) => __awaiter(void 0, void 0, void 0, func
         //call the service function
         const bike = yield (0, product_service_1.getSingleBikeFromDb)(productId);
         if (!bike) {
-            throw new Error("Bike not found!");
+            res.status(404).json({
+                message: "Bike not found!",
+                success: false,
+                data: null,
+            });
         }
         //send the response
         res.status(200).json({
@@ -75,7 +79,11 @@ const updateBike = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         //check if the bike exists
         const bike = yield (0, product_service_1.getSingleBikeFromDb)(productId);
         if (!bike) {
-            throw new Error("Update failed! Bike not found!");
+            res.status(404).json({
+                message: "Update failed! Bike not found!",
+                success: false,
+                data: null,
+            });
         }
         // check if the update data is empty
         if (Object.keys(updateData).length === 0) {

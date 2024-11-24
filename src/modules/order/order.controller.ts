@@ -34,7 +34,12 @@ export const placeOrder = async (
     // check if the product exists
     const product = await getSingleBikeFromDb(order?.product);
     if (!product) {
-      throw new Error("Order placing failed. Product not found!");
+      res.status(404).json({
+        message: "Order placing failed. Product not found!",
+        success: false,
+        data: null,
+      });
+      return;
     }
     // calculate the total price
     order.totalPrice = order.quantity * product.price;

@@ -32,7 +32,12 @@ const placeOrder = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         // check if the product exists
         const product = yield (0, product_service_1.getSingleBikeFromDb)(order === null || order === void 0 ? void 0 : order.product);
         if (!product) {
-            throw new Error("Order placing failed. Product not found!");
+            res.status(404).json({
+                message: "Order placing failed. Product not found!",
+                success: false,
+                data: null,
+            });
+            return;
         }
         // calculate the total price
         order.totalPrice = order.quantity * product.price;

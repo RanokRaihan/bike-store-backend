@@ -61,7 +61,11 @@ export const getSingleBike = async (
     //call the service function
     const bike = await getSingleBikeFromDb(productId);
     if (!bike) {
-      throw new Error("Bike not found!");
+      res.status(404).json({
+        message: "Bike not found!",
+        success: false,
+        data: null,
+      });
     }
 
     //send the response
@@ -91,7 +95,11 @@ export const updateBike = async (
     //check if the bike exists
     const bike = await getSingleBikeFromDb(productId);
     if (!bike) {
-      throw new Error("Update failed! Bike not found!");
+      res.status(404).json({
+        message: "Update failed! Bike not found!",
+        success: false,
+        data: null,
+      });
     }
 
     // check if the update data is empty
